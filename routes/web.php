@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+
+
+Route::group([], function () {
+
+    Route::get('/', 'ViewController@home')->name('home');
+
+    Route::get('/signup', 'ViewController@signup')->name('signup');
+
+    Route::post('/user/create', 'UserController@store');
 });

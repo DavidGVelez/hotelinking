@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Repository implements RepositoryInterface
+class UserRepository implements RepositoryInterface
 {
   protected $model;
 
@@ -37,5 +37,21 @@ class Repository implements RepositoryInterface
   public function show($id)
   {
     return $this->model->findOrFail($id);
+  }
+
+  public function getModel()
+  {
+    return $this->model;
+  }
+
+  public function setModel($model)
+  {
+    $this->model = $model;
+    return $this;
+  }
+
+  public function with($relations)
+  {
+    return $this->model->with($relations);
   }
 }

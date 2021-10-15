@@ -13,4 +13,10 @@ class ViewController extends Controller
 
         return view('home', compact('title'));
     }
+    public function signup()
+    {
+        $title = 'Signup';
+
+        return view('signup', compact('title'));
+    }
 }
