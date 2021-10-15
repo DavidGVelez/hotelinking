@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SignUpRequest;
-use App\Models\User;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\SignUpRequest;
 use App\Repositories\UserRepository;
+use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -24,13 +26,29 @@ class UserController extends Controller
 
     $this->model->create($user);
 
-    $this->login($request);
+    $this->login(LoginRequest::createFrom($request));
 
     return redirect(route('home'));
   }
 
-  public function login($user)
+  public function login(LoginRequest $request)
   {
-    Auth::attempt(['email' => $user->email, 'password' => $user->password,], true);
+
+    if (Auth::attempt(['email' => $request->email, 'password' => $request->password], true)) {
+      return redirect(route('home'));
+    } else {
+      return redirect('login')->withErrors(['login' => 'Fallo']);
+    }
+  }
+
+  public function logout(Request $request)
+  {
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect(route('home'));
   }
 }

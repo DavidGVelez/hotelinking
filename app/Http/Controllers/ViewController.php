@@ -19,4 +19,11 @@ class ViewController extends Controller
 
         return view('signup', compact('title'));
     }
+
+    public function login()
+    {
+        $title = 'Login';
+
+        return view('login', compact('title'));
+    }
 }

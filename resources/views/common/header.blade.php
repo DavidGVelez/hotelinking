@@ -7,8 +7,12 @@
         <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
       </ul>
       <div class="text-end">
-        <a href="/login" type="button" class="btn btn-outline-light me-2">Login</a>
-        <a href="/signup" type="button" class="btn btn-warning">Sign-up</a>
+        @if(Auth::user())
+          <a href="/logout" type="button" class="btn btn-outline-light me-2">Logout</a>
+        @else
+          <a href="/login" type="button" class="btn btn-outline-light me-2">Login</a>
+          <a href="/signup" type="button" class="btn btn-warning">Sign-up</a>
+        @endif
       </div>
     </div>
   </div>
