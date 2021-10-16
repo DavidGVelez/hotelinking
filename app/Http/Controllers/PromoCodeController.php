@@ -28,6 +28,13 @@ class PromoCodeController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect('/codes');
+        return redirect(route('my-codes'));
+    }
+
+    public function redeem(Request $request)
+    {
+        $this->model->redeem($request->except('_token')['codes']);
+
+        return redirect(route('my-codes'));
     }
 }

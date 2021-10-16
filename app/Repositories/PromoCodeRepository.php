@@ -13,6 +13,10 @@ class PromoCodeRepository extends BaseRepository
     return $this->model->create($data);
   }
 
+  public function redeem(array $data)
+  {
+    return $this->model->whereIn('code', $data)->update(['active' => 0, 'redeemed_at' => now()]);
+  }
 
   private function generateCode()
   {

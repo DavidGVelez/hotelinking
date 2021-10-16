@@ -31,7 +31,9 @@ Route::group([], function () {
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/codes', 'PromoCodeController@index');
-
-    Route::get('/code/create', 'PromoCodeController@store');
+    Route::group(['prefix' => '/codes'], function () {
+        Route::get('/', 'PromoCodeController@index')->name('my-codes');
+        Route::get('/create', 'PromoCodeController@store');
+        Route::post('/redeem', 'PromoCodeController@redeem');
+    });
 });
