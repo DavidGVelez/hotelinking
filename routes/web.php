@@ -28,3 +28,10 @@ Route::group([], function () {
 
     Route::get('/logout', 'UserController@logout')->name('logout');
 });
+
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('/codes', 'PromoCodeController@index');
+
+    Route::get('/code/create', 'PromoCodeController@store');
+});
