@@ -10,6 +10,7 @@
   <h1 class="title mb-3">
     My promo codes
   </h1>
+  @if (count(Auth::user()->promo_codes) > 0)
   <form action="/codes/redeem" method="post">
    @csrf 
     <ul class="list-group">
@@ -27,8 +28,10 @@
     <div class="d-flex justify-content-end mt-3">
       <button class="btn btn-primary">Redeem</button>
     </div>
-  
   </form>
+ @else
+  <span >You don't have any Promo codes yet!</span>
+ @endif
 </section>
 
 @endsection

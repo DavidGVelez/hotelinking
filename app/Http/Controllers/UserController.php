@@ -28,13 +28,13 @@ class UserController extends Controller
 
     Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember_me ?? null);
 
-    return redirect(route('home'));
+    return redirect(route('home'))->with('success', 'User successfully created!');
   }
 
   public function login(LoginRequest $request)
   {
     if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember_me)) {
-      return redirect(route('home'));
+      return redirect(route('home'))->with('info', 'Logged in successfully!');
     }
     return redirect(route('login'))->withErrors(['login' => 'Email or password incorrect!']);
   }
@@ -47,6 +47,6 @@ class UserController extends Controller
 
     $request->session()->regenerateToken();
 
-    return redirect(route('home'));
+    return redirect(route('home'))->with('info', 'User logged out!');
   }
 }

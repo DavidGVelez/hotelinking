@@ -28,13 +28,15 @@ class PromoCodeController extends Controller
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect(route('my-codes'));
+        return redirect(route('my-codes'))->with('success', 'Promo code successfullt generated!');
     }
 
     public function redeem(Request $request)
     {
-        $this->model->redeem($request->except('_token')['codes']);
-
-        return redirect(route('my-codes'));
+        if ($request->codes) {
+            $this->model->redeem($request->except('_token')['codes']);
+            return redirect(route('my-codes'))->with('success', 'Codes successfully redeemed!');
+        }
+        return redirect(route('my-codes'))->with('warning', 'You have not select any code! Try again');
     }
 }
