@@ -21,14 +21,10 @@ Route::group([], function () {
     Route::get('/', 'ViewController@home')->name('home');
 
     Route::get('/login', 'ViewController@login')->name('login');
-
     Route::post('/login', 'UserController@login');
 
     Route::get('/signup', 'ViewController@signup')->name('signup');
+    Route::post('/signup', 'UserController@store');
 
     Route::get('/logout', 'UserController@logout')->name('logout');
-
-    Route::group(['prefix' => '/user'], function () {
-        Route::post('/create', 'UserController@store');
-    });
 });

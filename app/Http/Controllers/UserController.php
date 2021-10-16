@@ -26,19 +26,17 @@ class UserController extends Controller
 
     $this->model->create($user);
 
-    $this->login(LoginRequest::createFrom($request));
+    Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember_me ?? null);
 
     return redirect(route('home'));
   }
 
   public function login(LoginRequest $request)
   {
-
-    if (Auth::attempt(['email' => $request->email, 'password' => $request->password], true)) {
+    if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->remember_me)) {
       return redirect(route('home'));
-    } else {
-      return redirect('login')->withErrors(['login' => 'Fallo']);
     }
+    return redirect(route('login'))->withErrors(['login' => 'Email or password incorrect!']);
   }
 
   public function logout(Request $request)

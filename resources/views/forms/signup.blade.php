@@ -1,5 +1,6 @@
-<form method="POST" action="/user/create">
+<form method="POST" action="/signup">
   @csrf
+  <span class="text-danger fs-6">{{$errors->first('signup')}}</span>
   <div class="mb-3">
     <label for="email"  class="form-label">Email address</label>
     <input type="text" name="email" class="form-control" id="email">

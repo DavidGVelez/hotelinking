@@ -9,6 +9,9 @@
     <label for="password" class="form-label">Password</label>
     <input type="password" name="password" class="form-control" id="password">
   </div>
-  {{$errors}}
+  <div class="mb-3">
+    <label for="remember_me" class="form-label">Remember me</label>
+    <input type="checkbox" name="remember_me" class="" id="remember_me">
+  </div>
   <button type="submit" class="btn btn-primary">Login</button>
 </form>

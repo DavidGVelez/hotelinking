@@ -8,6 +8,13 @@ use Illuminate\Http\JsonResponse;
 class SignUpRequest extends FormRequest
 {
     /**
+     * Redirect route when errors occur.
+     *  
+     * @var string
+     */
+    protected $redirectRoute = 'signup';
+
+    /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
