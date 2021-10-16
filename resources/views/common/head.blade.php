@@ -11,4 +11,4 @@
 
     <title>{{$title}}</title>
   </head>
-  <body class="d-flex flex-column">
+  <body class="d-flex flex-column" style="height: 100vh">

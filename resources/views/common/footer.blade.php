@@ -1,7 +1,7 @@
 <div class="container">
-  <footer class="py-5">
-    <div class="d-flex justify-content-between py-4 my-4 border-top">
-      <p>© 2021 Company, Inc. All rights reserved.</p>
+  <footer>
+    <div class="py-4 border-top">
+      <span>© 2021 David Gavilanes, Inc. All rights reserved.</p>
     </div>
   </footer>
 </div>
