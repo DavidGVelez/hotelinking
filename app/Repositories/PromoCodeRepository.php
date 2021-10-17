@@ -18,7 +18,7 @@ class PromoCodeRepository extends BaseRepository
     return $this->model->whereIn('code', $data)->update(['active' => 0, 'redeemed_at' => now()]);
   }
 
-  private function generateCode()
+  public function generateCode()
   {
     $code = Str::random(5);
     if ($this->model::where('code', $code)->count() > 0) $this->generateCode();
