@@ -1,9 +1,10 @@
 <form method="POST" action="/login">
   @csrf
     <span class="text-danger fs-6 d-block">{{$errors->first('login')}}</span>
-  <div class="mb-3">
-    <label for="email"  class="form-label">Email address</label>
-    <input type="text" name="email" class="form-control" id="email">
+    <div class="mb-3">
+      <label for="email"  class="form-label">Email address</label>
+      <input type="email" name="email" class="form-control" id="email">
+      <span class="text-danger fs-6 d-block">{{$errors->first('email')}}</span>
   </div>
   <div class="mb-3">
     <label for="password" class="form-label">Password</label>

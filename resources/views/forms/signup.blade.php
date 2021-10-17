@@ -3,7 +3,7 @@
   <span class="text-danger fs-6">{{$errors->first('signup')}}</span>
   <div class="mb-3">
     <label for="email"  class="form-label">Email address</label>
-    <input type="text" name="email" class="form-control" id="email">
+    <input type="email" name="email" class="form-control" id="email">
     <span class="text-danger fs-6">{{$errors->first('email')}}</span>
   </div>
   <div class="mb-3">
